@@ -1,0 +1,281 @@
+In the last sections we learned about expressions and operators, in this
+lesson we are going to use them along with conditional statements to implement
+interactivity in our applications.
+
+
+IF AND ELSE:
+
+Get the current hour and according to it's value we are going to display a message
+to the user. we are going to use IF AND ELSE statements to achieve this.
+
+if (conditional){
+    statement will run if true.
+}
+else if (another condition){
+    statement executes if true.
+}
+else if (yetAnotherCondition){
+    statement executes if true.
+}
+else {
+    our fallback.
+}
+
+Question:
+If hour is between 6am and 12pm: Good morning! 
+If it is between 12pm and 6pm: Good afternoon! Otherwise: Good evening!
+
+let hour = 10;
+
+if (hour >= 6 && hour < 12){
+    console.log('Good morning');
+}
+else if (hour >= 12 && hour < 18){
+    console.log('Good afternoon');
+}
+else {
+    console.log('Good evening');
+}
+
+
+SWITCH AND CASE:
+
+lets start by declaring a variable called role, let's imagine this represents
+the role of the current user. If he/she is a guest, moderator, admin. we can 
+achieve this with IF AND ELSE statement but we are going to make use of SWITCH AND CASE.
+
+
+let role;
+
+switch (variable) {
+    "the case statement is used to compare the value of the variable with something"
+    case 'guest' :
+      console.log('Guest User');
+      break;
+    "if break wasn't added all of the console.log() will run."
+
+    case 'moderator':
+      console.log('Moderator User');
+      break;
+
+    default:
+      console.log('Unknown User');
+    }
+
+in the default state we don't need a break; 
+
+lets save and check our console.
+
+Heres the take away with switch and case you can use it to compare the value
+of a variable against a bunch of other values. They don't necessary have to be
+a string, it can also be a number or even booleans. 
+
+we can implement this exact logic using IF AND ELSE STATEMENT.
+
+
+//////////////////////////////////////////////////////////////////////////
+
+
+LOOPS:
+Repeating of an action a number of times.
+
+Let's say we want to display Hello World five(5) times in our console(),
+the poorest way to do so is by writing it five times.
+
+console.log('Hello World');
+console.log('Hello World');
+console.log('Hello World');
+console.log('Hello World');
+console.log('Hello World');
+
+Types of LOOPS:
+FOR LOOP
+WHILE LOOP 
+DO...WHILE LOOP
+FOR...IN LOOP
+FOR...OF LOOP
+
+all this loops essentially do the same thing but the way they are written is quite 
+the difference.
+
+lets take a look at FOR LOOP:
+
+This is how we write a for loop:
+
+for (Initial expression; condition; increment expression){
+    statement
+}
+
+Let's say we want to display Hello World five(5) times in our console(),
+the poorest way to do so is by writing it five times.
+
+for (let i = 0; i < 5; i++) {
+    console.log('Hello World');
+}
+
+
+Let's make this program a bit more interesting let's say we want to display odd 
+numbers between 1 to 5. So instead of logging Hello World in the console, we can
+have an if statement and check the remainder of the division of i by 2.
+
+for (let i = 0; i < 5; i++) {
+    if (i % 2 !== 0) console.log(i);
+}
+
+
+WHILE LOOP:
+
+in the previous lesson on LOOPS we saw how to display all the odd numbers from 5 
+to 1 using FOR LOOP.
+
+for (let i = 0; i < 5; i++) {
+    if (i % 2 !== 0) console.log(i);
+}
+
+let's see how we can implement this using a WHILE LOOP. 
+The key difference between a WHY LOOP and a FOR LOOP is that in FOR LOOPS, the loop
+variable is part of the loop itself, but in WHY LOOPS  we have to declare the variable
+externally. Let's see:
+
+
+let i = 0;
+while (condition){
+    statement;
+    increment expression;
+}
+
+
+let i = 0;
+while (i <= 5){
+    if (i % 2 !== 0) console.log(i);
+    i++;
+}
+
+
+DO...WHILE LOOP:
+
+DO...WHILE LOOP are quite similar to WHY LOOPS, but they're slightly different. 
+just as WHY LOOP we have to declare the variable externally, let's see:
+
+let i = 0;
+do {
+    statement;
+    increment expression;
+} while (condition);
+
+N.B: DO...WHILE LOOP are always executed at least once, even if this condition evaluates
+to false.
+
+let i = 0;
+do {
+    if (i % 2 !== 0) console.log(i);
+    i++;
+} while (i <= 5);
+
+now let's explain what we have on our note before:
+
+let i = 9;
+do {
+    if (i % 2 !== 0) console.log(i);
+    i++;
+} while (i <= 5);
+
+if you check your console you would notice that condition was executed first then it ran the 
+iteration operator and checked if it was true but then it came out false it stopped.
+
+
+INFINITE LOOP:
+These are loops that runs forever and are likely to crash your browser or computer.
+
+let i = 0;
+while (i <= 5){
+    if (i % 2 !== 0) console.log(i);
+    // i++;
+}
+
+avoid them!!!
+
+so far so good we've cover the three(3) kinds of loops we have in javascript,
+and we've seen how we can use them to repeat an action a number of times.
+But we have two(2) more types of loops in JavaScript and we use them to iterate over
+the properties of an object or elements in a array.
+
+lets see:
+
+FOR...IN LOOP:
+Let's say we have an object like person, with two(2) properties name: 'Napoleon' and 
+age: 30. we want to display all the properties of we used in this object that is when we 
+make use of the FOR...IN LOOP:
+
+Its not written like the FOR LOOP we already know:
+for (Initial expression; condition; increment expression){
+    statement
+}
+
+it's written different like this:
+for (let key in person)
+    console.log(key);
+
+Lets say we want to display the values of the person object property, remember i told you in 
+our introduction to OBJECT we said we can access the properties using, Dot Notation or Bracket Notation.
+
+const person = {
+    name: 'Napoleon',
+    age: 30
+};
+
+for (let key in person)
+    console.log(key);
+
+
+// Dot Notation:
+person.name
+
+// Bracket Notation:
+person['name']
+
+for (let key in person)
+    console.log(key, person[key]);
+
+Over an array:
+
+const colors = ['red', 'green', 'blue'];
+for (let index in colors)
+    console.log(index);
+
+for (let index in colors)
+    console.log(index, colors[index]);
+
+
+FOR...OF LOOP:
+We use the FOR...OF LOOP to iterate over the elements or items in an array.
+
+const colors = ['red', 'green', 'blue'];
+for (let color of colors)
+    console.log(color);
+
+
+BREAK and CONTINUE:
+With all the loops you have learned about in this section, there are two keywords,
+BREAK and CONTINUE that can change how the loop behaves. In this demo I'm going to 
+use a WHILE LOOP but what you're going to learn applies to all kinds of loops we have 
+learned in this section. So let's start by declaring a variable;
+
+let i = 0;
+while(i <= 10){
+    console.log(i);
+    i++;
+}
+
+Now sometimes you want to jump out of a loop for some reason that may happen at run time.
+For example, here we can have an if statement with the condition like this;
+
+let i = 0;
+while(i <= 10){
+    if (i === 5) break;
+
+    console.log(i);
+    i++;
+}
+
+Now let's take a look at the CONTINUE keyword;
